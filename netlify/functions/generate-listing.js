@@ -29,7 +29,7 @@ export async function handler(event) {
         'anthropic-version': '2023-06-01'
       },
       body: JSON.stringify({
-        model: 'claude-sonnet-4-6',
+        model: 'claude-opus-4-7',
         max_tokens: 8000,
         system: systemPrompt,
         messages: [{ role: 'user', content: [...imageContent, { type: 'text', text: userPrompt }] }]
