@@ -29,8 +29,8 @@ export async function handler(event) {
         'anthropic-version': '2023-06-01'
       },
       body: JSON.stringify({
-        model: 'claude-opus-4-7',
-        max_tokens: 8000,
+        model: 'claude-haiku-4-5-20251001',
+        max_tokens: 4000,
         system: systemPrompt,
         messages: [{ role: 'user', content: [...imageContent, { type: 'text', text: userPrompt }] }]
       })
