@@ -97,13 +97,21 @@ function App() {
     setError(null);
 
     try {
-      const response = await fetch('/.netlify/functions/generate-listing', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          images: imageBase64s,
-          additionalColors: productDetails.additionalColors,
-          customNotes: productDetails.customNotes
+      const controller = new AbortController();
+const timeoutId = setTimeout(() => controller.abort(), 120000); // 2 minute timeout
+
+const response = await fetch('/.netlify/functions/generate-listing', {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify({
+    images: imageBase64s,
+    additionalColors: productDetails.additionalColors,
+    customNotes: productDetails.customNotes
+  }),
+  signal: controller.signal
+});
+
+clearTimeout(timeoutId);
         })
       });
 
