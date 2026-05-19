@@ -103,8 +103,7 @@ function App() {
         body: JSON.stringify({
           images: imageBase64s,
           additionalColors: productDetails.additionalColors,
-          customNotes: productDetails.customNotes,
-          brandConstants: HANDSOLE_CONSTANTS
+          customNotes: productDetails.customNotes
         })
       });
 
